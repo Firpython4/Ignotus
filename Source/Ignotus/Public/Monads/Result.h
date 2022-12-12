@@ -117,16 +117,16 @@ private:
 #define MATCH_RESULT(result, okVariableName, okBlock, errorVariableName, errorBlock) \
 	do \
 	{ \
-		const TOptional<decltype(result)::FOkType> okOption = (result).GetOk(); \
+		const TOptional<decltype((result))::FOkType> okOption = (result).GetOk(); \
 		if ((okOption).IsSet()) \
 		{ \
-			const decltype(result)::FOkType& okVariableName = okOption.GetValue(); \
+			const decltype((result))::FOkType& okVariableName = okOption.GetValue(); \
 			{ okBlock } \
 		} \
 		else \
 		{ \
-			const TOptional<decltype(result)::FErrorType> errorOption = (result).GetError(); \
-			const decltype(result)::FErrorType& errorVariableName = errorOption.GetValue(); \
+			const TOptional<decltype((result))::FErrorType> errorOption = (result).GetError(); \
+			const decltype((result))::FErrorType& errorVariableName = errorOption.GetValue(); \
 			{ errorBlock } \
 		} \
 	} \
